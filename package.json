@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "react-flow-renderer": "^8.5.0"
+  }
+}
