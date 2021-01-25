@@ -11,3 +11,30 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+.App{
+  height: 1000px;
+  color: brown;
+}
+/* .grid-container {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 10.5fr 10.5fr 10.5fr 10.5fr 10.5fr 10.5fr 10.5fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "helloworld"
+    "customise"
+    "overview"
+    "updateable"
+    "horizontal"
+    "intraction"
+    "validation";
+}
+.helloworld { grid-area: helloworld;
+color: yellow; }
+.customise { grid-area: customise; 
+color:red}
+.overview { grid-area: overview; }
+.updateable { grid-area: updateable; }
+.horizontal { grid-area: horizontal; }
+.intraction { grid-area: intraction; }
+.validation { grid-area: validation; } */
