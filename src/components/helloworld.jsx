@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactFlow from 'react-flow-renderer';
+import Button from '@material-ui/core/Button';
 
 import "./app.css"
 const elements = [
@@ -13,7 +14,8 @@ const elements = [
     {
         id: '2',
         // you can also pass a React component as a label
-        data: { label: <div>Default Node</div> },
+        data: { 
+            label: <div>Default Node</div> },
         position: { x: 100, y: 125 },
     },
     {
@@ -28,25 +30,27 @@ const elements = [
 ];
 
 //connection buttonn
-    const ConnectBtn =  ()=>{
-        return <div>
-                 <button> + </button>
-               </div>
-    }
-    //disconnect button
-    const DisconnectBtn = () => {
-       alert("listerning",20000)
-    }
+const ConnectBtn =  ()=>{
+    return <div>
+                <button> + </button>
+            </div>
+};
+
+//disconnect button
+const DisconnectBtn = () => {
+    alert("listerning",20000)
+};
+
 const onElementClick = (event, element) => {
-    alert(element.data.label,"is clicked")
-       
-    };
-    //create butoon
-    const CreateBtn = () => {
-        return <div>
-            <button> + </button>
-        </div>
-    }
+    alert(`${element.data.label} is clicked`)
+};
+
+//create button
+const CreateBtn = () => {
+    return <div>
+        <button> + </button>
+    </div>
+};
 
 export default () => (
     <div style={{ height: 1000 }}>
