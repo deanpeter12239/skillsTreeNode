@@ -1,6 +1,16 @@
-button {
+.connect {
     border-radius: 50%;
-    color:black;
-    width: 30px;
-    height: 40px;
+    background-color:lightblue;
+    width: 20px;
+    height: 20px;
+    margin-left: 150px;
+    margin-top: -10px;
+}
+.disconnect{
+    border-radius: 50%;
+    background-color:red;
+    width: 20px;
+    height: 20px;
+    margin-left: 150px;
+    margin-top: -10px;
 }

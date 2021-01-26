@@ -14,14 +14,21 @@ const elements = [
     {
         id: '2',
         // you can also pass a React component as a label
-        data: { 
-            label: <div>Default Node</div> },
+        data: { label: <div>
+            <div>
+                <button className="connect">+</button>
+            </div>
+        </div> },
         position: { x: 100, y: 125 },
     },
     {
         id: '3',
         type: 'output', // output node
-        data: { label: 'Output Node' },
+        data: { label: < div >
+            <div>
+                <button className="disconnect">-</button>
+            </div>
+        </div > },
         position: { x: 250, y: 250 },
     },
     // animated edge
@@ -30,31 +37,29 @@ const elements = [
 ];
 
 //connection buttonn
-const ConnectBtn =  ()=>{
-    return <div>
-                <button> + </button>
-            </div>
-};
-
-//disconnect button
-const DisconnectBtn = () => {
-    alert("listerning",20000)
-};
-
-const onElementClick = (event, element) => {
-    alert(`${element.data.label} is clicked`)
-};
-
-//create button
-const CreateBtn = () => {
-    return <div>
-        <button> + </button>
-    </div>
-};
+    const ConnectBtn =  ()=>{
+        return <div>
+                 <button> + </button>
+               </div>
+    }
+    //disconnect button
+    // const DisconnectBtn = () => {
+    //    alert("listerning",20000)
+    // }
+// const onElementClick = (event, element) => {
+//     alert(element.data.label,"is clicked")
+       
+//     };
+//     //create butoon
+    const CreateBtn = () => {
+        return <div>
+            <button> + </button>
+        </div>
+    }
 
 export default () => (
     <div style={{ height: 1000 }}>
-        <ReactFlow elements={elements} onElementClick={onElementClick}>
+        <ReactFlow elements={elements} >
             
         </ReactFlow>
     </div>
