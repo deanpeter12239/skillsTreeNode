@@ -52,6 +52,18 @@ class CreateSkills extends React.Component{
     }
     render(){
         // dummy nodes to the files
+
+
+        const connectBtn = ()=>{
+            return (<div>
+                <div>
+                    <button
+                        onClick={e => this.modalOpen(e)}
+                        className="connect">+
+                        </button>
+                </div>
+            </div>)
+        }
         const elements = [
             {
                 id: '1',
@@ -64,15 +76,18 @@ class CreateSkills extends React.Component{
                 id: '2',
                 // you can also pass a React component as a label
                 data: {
-                    label: <div>
-                        <div>
-                            <button
-                                onClick={e => this.modalOpen(e)}
-                                className="connect">+
-                        </button>
-                        </div>
-                    </div>
+
+                    label:  this.connectBtn(),
+                    // <div>
+                    // //     <div>
+                    // //         <button
+                    //             onClick={e => this.modalOpen(e)}
+                    //             className="connect">+
+                    //     </button>
+                    //     </div>
+                    // </div>
                 },
+
                 position: { x: 100, y: 125 },
             },
             {
@@ -95,6 +110,7 @@ class CreateSkills extends React.Component{
             { id: 'e2-3', source: '2', target: '3' },
         ];
         return(
+            
             <div style={{height: 1000}} >
                 <ReactFlow elements={elements} >
                 </ReactFlow>
