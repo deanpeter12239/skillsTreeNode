@@ -8,9 +8,10 @@
 }
 .disconnect{
     border-radius: 50%;
-    background-color:red;
+    background-color:rgb(100, 29, 29);
     width: 20px;
     height: 20px;
     margin-left: 150px;
     margin-top: -10px;
+    
 }
