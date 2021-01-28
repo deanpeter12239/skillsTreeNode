@@ -6,19 +6,12 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
-<<<<<<< HEAD
     "material-ui": "^0.20.2",
-=======
     "bootstrap": "4.3.1",
->>>>>>> 01c51ea247133d9b3d12bf341e4c5f20f51a02e5
     "react": "^17.0.1",
     "react-bootstrap": "^1.4.3",
     "react-dom": "^17.0.1",
-<<<<<<< HEAD
-    "react-flow-renderer": "^8.5.0",
-=======
     "react-flow-renderer": "^8.6.0",
->>>>>>> 01c51ea247133d9b3d12bf341e4c5f20f51a02e5
     "react-scripts": "4.0.1",
     "web-vitals": "^0.2.4"
   },
