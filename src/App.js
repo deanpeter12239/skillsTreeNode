@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="App">
       <div className="Helloworld">
-        <Customise></Customise>
+        <Customise/>
       </div>
     </div>
   );
