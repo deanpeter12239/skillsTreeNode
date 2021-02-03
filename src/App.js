@@ -1,5 +1,4 @@
 import './App.css';
-import Skills from "./components/createSkills"
 import Customise from "./components/helloworldCustomise"
 function App() {
   return (
