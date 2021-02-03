@@ -21,7 +21,8 @@ class Customize extends React.Component {
             name: "",
             modalInputName: "",
             modalInputDiscription: "",
-            modelPercentage: "0%",
+            modelSkillPercent: "0%",
+            modelParentSkillPercent: "100%",
 
             //for nodes
             idHolder: "",
@@ -36,7 +37,7 @@ class Customize extends React.Component {
                     data: {
                         text: 'Skill One ',
                         color: {
-                            borderColor: '#FFF000', //colour
+                            borderColor: this.nodeColor, //colour
                             padding: 10,
                             borderStyle: "solid",
                             borderRadius: 80
@@ -127,8 +128,44 @@ class Customize extends React.Component {
     };
 
     percentageChange = (e) => {
-        this.setState({ modelPercentage: `${e.target.value}%` })
+        if (e.target.id === "skPercent"){
+            this.setState({ modelSkillPercent: `${e.target.value}%` })
+        } else if (e.target.id === "parentPercent"){
+            this.setState({ modelParentSkillPercent: `${e.target.value}%` })
+        }
+    };
+
+    checkPercentageSum = (elements, id) => {
+        let sum = 0
+        let edgesArr = []
+        let targetEdgeLabels = []
+
+        elements.forEach((obj) => {
+            if (obj.id.substring(0, 2) === "ed"){
+                edgesArr.push(obj)
+            }
+        })
         
+        edgesArr.forEach((edge) => {
+            if( edge.target === id){
+                targetEdgeLabels.push(edge.label)
+            }
+        })
+
+        targetEdgeLabels.forEach((label) => {
+            let num = Number(label.slice(0, -1))
+            sum = sum + num
+        })
+
+        if (sum > 100){
+            console.log("Labels > 100")
+
+        } else if (sum < 100) {
+            console.log("Labels < 100")
+
+        } else {
+            console.log("Labels = 100")
+        }
     };
 
     render() {
@@ -142,10 +179,11 @@ class Customize extends React.Component {
                     id: `sk_${name}`,
                     type: 'special',
                     position: { x: 0, y: 0 },
+                    style: { background: "#aaaaa", },
                     data: {
                         text: name,
                         color: {
-                            // color: color, //colour
+                            color: color,
                             padding: 10,
                             borderColor: color,
                             borderStyle: "solid",
@@ -166,12 +204,17 @@ class Customize extends React.Component {
             let newEdge = {
                 id: `ed_${name}`,
                 source: `${id}`,
-                target: target
+                target: target,
+                label: this.state.modelParentSkillPercent
             };
 
             let updEdges = currArr.concat(newEdge)
-            console.log(updEdges)
-            this.setState({ elements: updEdges})
+            this.checkPercentageSum(updEdges, target)
+            this.setState({ 
+                elements: updEdges,
+                modelParentSkillPercent: "100%",
+                modelSkillPercent: "0%"
+            })
         };
 
         const onSubmit = () => {
@@ -236,7 +279,7 @@ class Customize extends React.Component {
                         <ReactFlow elements={this.state.elements} nodeTypes={nodeTypes} onEdgeUpdate={this.onEdgeUpdate} onLoad={this.onLoad}>
                             <MiniMap></MiniMap>
                             <Controls/>
-                            <Background color="#aaaaaa" gap={5} />
+                            <Background variant="lines" color="#aaa" gap={6}/>
                         </ ReactFlow>
                         <div className="App">
                             <Modal show={this.state.modal} handleClose={e => this.modalClose(e)} >
@@ -254,13 +297,22 @@ class Customize extends React.Component {
                                             <Col xs='10'> <Form.Control as="textarea" rows={3} /> </Col>
                                         </Row>
                                     </Form.Group>
-                                    <Form.Group controlId="skColor">
+                                    <Form.Group>
                                         <Row>
                                             <Col xs='2'> <Form.Label>Skill Color:</Form.Label> </Col>
                                             <Col xs='3'> <SketchPicker color={this.state.nodeColor} onChangeComplete={this.handleChangeComplete} /> </Col>
-                                            <Col xs='3'> <Form.Label>Percentage Complete:</Form.Label> </Col>
-                                            <Col xs='3'> <Form.Control type="range" min="0" max="100" defaultValue="0" onChange={this.percentageChange} /> </Col>
-                                            <Col xs='1'> <Form.Control type="text" value={this.state.modelPercentage} /> </Col>
+                                            <Col xs='3'> 
+                                                <Form.Label>Skill Percentage Complete:</Form.Label> <br/> <br/> 
+                                                <Form.Label>Parent Skill Percentage Complete:</Form.Label>
+                                            </Col>
+                                            <Col xs='3'> 
+                                                <Form.Control id="skPercent" type="range" min="0" max="100" defaultValue="0" onChange={this.percentageChange} />   <br/> <br/>
+                                                <Form.Control id="parentPercent" type="range" min="0" max="100" defaultValue="100" onChange={this.percentageChange} /> 
+                                            </Col>
+                                            <Col xs='1'> 
+                                                <Form.Control type="text" value={this.state.modelSkillPercent} readOnly/>  <br/>
+                                                <Form.Control type="text" value={this.state.modelParentSkillPercent} readOnly/> 
+                                            </Col>
                                         </Row>
                                     </Form.Group>
                                     <Button onClick={onSubmit} >SUBMIT</Button>
