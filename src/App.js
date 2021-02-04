@@ -1,5 +1,5 @@
 import './App.css';
-import Customise from "./components/helloworldCustomise"
+import Customise from "./components/SkillMap"
 function App() {
   return (
     <div className="App">

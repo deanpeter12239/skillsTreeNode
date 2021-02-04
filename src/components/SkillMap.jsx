@@ -20,7 +20,7 @@ class Customize extends React.Component {
             modal: false,
             name: "",
             modalInputName: "",
-            modalInputDiscription: "",
+            modalInputDescription: "",
             modelSkillPercent: "0%",
             modelParentSkillPercent: "100%",
 
@@ -31,7 +31,7 @@ class Customize extends React.Component {
             //skill map elements
             elements: [
                 {
-                    id: '2',
+                    id: 'sk_2',
                     type: 'special',
                     position: { x: 100, y: 100 },
                     data: {
@@ -45,7 +45,7 @@ class Customize extends React.Component {
                     },
                 },
                 {
-                    id: '3',
+                    id: 'sk_3',
                     type: 'special',
                     position: { x: 200, y: 200 },
                     data: {
@@ -71,11 +71,13 @@ class Customize extends React.Component {
 
     //this function adds the nodes ID to the data objects. That ID will be used to create the edges
     addId(ele){
+        console.log("This is the ele", ele)
         let newEle = ele.map((node)=>{
-                if (node.id.substring(0, 2) === 'ed') {
+                if (node.id.substring(0, 2) === 'sk') {
+                    console.log(node, node.id)
+                    node.data.nodeId = node.id
                     return node
                 } else {
-                    node.data.nodeId = node.id
                     return node
                 }
             }
@@ -105,9 +107,10 @@ class Customize extends React.Component {
     modalClose() {
         this.setState({
             modalInputName: "",
-            modalInputDiscription: "",
+            modalInputDescription: "",
             modal: false
         });
+
     };
 
     onEdgeUpdate = (oldEdge, newConnection) => {
